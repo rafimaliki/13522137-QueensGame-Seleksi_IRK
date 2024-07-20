@@ -11,7 +11,7 @@ const solveQueen = (boardData, setBoardData) => {
 
   if (result.bool) {
     console.log("Solution found!");
-    console.log(result.queenMatrix);
+    // console.log(result.queenMatrix);
 
     for (let i = 0; i < boardData.height; i++) {
       for (let j = 0; j < boardData.width; j++) {

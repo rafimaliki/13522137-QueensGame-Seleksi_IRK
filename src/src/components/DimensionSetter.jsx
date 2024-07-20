@@ -33,13 +33,13 @@ const DimensionSetter = ({ dimension, boardData, setBoardData }) => {
   };
 
   return (
-    <div className="w-36 h-fit text-black flex mb-2 justify-around">
-      <p className="mr-2 text-black text-sm text-shadow">{dimension}</p>
+    <div className="w-8 h-fit text-black flex mb-2 justify-around">
+      {/* <p className="mr-2 text-black text-sm text-shadow">{dimension}</p> */}
       <select
         id={dimension}
         value={selectedOption}
         onChange={handleChange}
-        className="rounded-md w-20 text-sm text-center flex items-center p-0 border border-gray-300 focus:outline-none focus:border-blue-500 box-shadow"
+        className="rounded-md w-8 text-sm text-center flex items-center p-0 border border-gray-300 focus:outline-none focus:border-blue-500 box-shadow"
         style={{ boxSizing: "border-box", overflow: "visible" }} // Adjust box-sizing and overflow if needed
       >
         {options.map((option, index) => (

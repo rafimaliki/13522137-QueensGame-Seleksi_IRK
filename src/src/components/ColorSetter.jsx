@@ -43,7 +43,7 @@ const ColorSetter = ({
           {isOpen && (
             <div
               className="border border-black absolute z-10 mt-1 mr-1 w-fit bg-white rounded shadow-lg"
-              style={{ right: "100%", marginRight: "10px" }}
+              style={{ right: "100%", marginRight: "10px", top: "-300%" }}
             >
               {colors.map((color, index) => (
                 <div

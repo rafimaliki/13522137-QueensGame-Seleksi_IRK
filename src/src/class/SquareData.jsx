@@ -1,7 +1,7 @@
 const colors = [
   "#ebebeb", // Light Gray
-  "#f8bbd0", // Light Pink
   "#f3e5f5", // Lavender
+  "#f8bbd0", // Light Pink
   "#e1bee7", // Light Purple
   "#c5cae9", // Light Blue
   "#bbdefb", // Light Sky Blue
