@@ -67,9 +67,11 @@ const ColorSetter = ({
                 <div className="flex flex-col">
                   {secondHalfOfColor.map((color, index) => (
                     <div
-                      key={index}
+                      key={index + firstHalfOfColor.length}
                       className="flex items-center p-2 cursor-pointer hover:bg-gray-200 rounded"
-                      onClick={() => handleColorChange(index)}
+                      onClick={() =>
+                        handleColorChange(index + firstHalfOfColor.length)
+                      }
                     >
                       <div
                         className="w-6 h-6 rounded"
