@@ -51,8 +51,6 @@ const ImportButton = ({ boardData, setBoardData }) => {
         event.target.value = null;
       };
       reader.readAsText(file);
-
-      // clear file from ram
     }
   };
 
@@ -62,13 +60,13 @@ const ImportButton = ({ boardData, setBoardData }) => {
 
   const fileInputRef = React.createRef();
 
-  const printMatrix = () => {
-    let matrixString = "";
-    matrix.forEach((row) => {
-      matrixString += row.join(" ") + "\n";
-    });
-    return matrixString;
-  };
+  // const printMatrix = () => {
+  //   let matrixString = "";
+  //   matrix.forEach((row) => {
+  //     matrixString += row.join(" ") + "\n";
+  //   });
+  //   return matrixString;
+  // };
 
   return (
     <div className="relative flex flex-col justify-end items-end">
