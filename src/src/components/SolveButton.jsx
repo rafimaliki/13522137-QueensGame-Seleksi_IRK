@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import AlertDialog from "./AlertDialog";
 import { solveQueen } from "../logic/Solve";
 
-const SolveButton = ({ boardData, setBoardData }) => {
+const SolveButton = ({
+  boardData,
+  setBoardData,
+  chessPiece,
+  setNoSollution,
+}) => {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleClick = () => {
-    solveQueen(boardData, setBoardData);
+    const haveSollution = solveQueen(boardData, setBoardData, chessPiece);
     setShowAlert(true);
 
     setTimeout(() => {
       setShowAlert(false);
+      setNoSollution(!haveSollution);
     }, 1500);
   };
 

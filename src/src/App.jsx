@@ -7,13 +7,18 @@ import DimensionSetter from "./components/DimensionSetter";
 import ColorSetter from "./components/ColorSetter";
 import SolveButton from "./components/SolveButton";
 import ImportButton from "./components/ImportButton";
-import { makeQueenMatrix } from "./logic/Solve";
+import { makeQueenMatrix } from "./logic/Util";
+import PieceSetter from "./components/PieceSetter";
+import ClearButton from "./components/ClearButton";
+import ResetButton from "./components/ResetButton";
 
 function App() {
   const [boardData, setBoardData] = useState(new BoardData(8, 8));
   const [colorIndex, setColorIndex] = useState(0);
   const [isColorMode, setIsColorMode] = useState(false);
   const [queenMatrix, setQueenMatrix] = useState(makeQueenMatrix(boardData));
+  const [chessPiece, setChessPiece] = useState(0);
+  const [noSollution, setNoSollution] = useState(false);
 
   useEffect(() => {
     setQueenMatrix(makeQueenMatrix(boardData));
@@ -35,6 +40,7 @@ function App() {
               colorIndex={colorIndex}
               isColorMode={isColorMode}
               queenMatrix={queenMatrix}
+              chessPiece={chessPiece}
             />
             <div className="ml-4 w-24 h-fit pl-1 flex flex-col items-center mt-2 border pt-2 rounded">
               <ImportButton boardData={boardData} setBoardData={setBoardData} />
@@ -52,6 +58,7 @@ function App() {
                   setBoardData={setBoardData}
                 />
               </div>
+              <PieceSetter setChessPiece={setChessPiece} />
               <ColorSetter
                 colorIndex={colorIndex}
                 setColorIndex={setColorIndex}
@@ -62,8 +69,19 @@ function App() {
                 <SolveButton
                   boardData={boardData}
                   setBoardData={setBoardData}
+                  chessPiece={chessPiece}
+                  setNoSollution={setNoSollution}
                 />
               )}
+              {noSollution ? (
+                <p className="text-sm h-4 mb-4 text-red-600 font-semibold">
+                  No Sollution!
+                </p>
+              ) : (
+                <div className="h-4 mb-4"></div>
+              )}
+              <ClearButton boardData={boardData} setBoardData={setBoardData} />
+              <ResetButton boardData={boardData} setBoardData={setBoardData} />
             </div>
           </div>
         </div>

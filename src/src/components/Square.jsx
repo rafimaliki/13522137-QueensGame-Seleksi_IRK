@@ -1,7 +1,12 @@
 import { useState } from "react";
-import blackQueen from "../assets/black_queen.png";
+
 import { colors } from "../class/SquareData";
-import { validateQueen } from "../logic/Solve";
+import { validator } from "../logic/Solve";
+
+import blackQueen from "../assets/black_queen.png";
+import blackRook from "../assets/black_rook.png";
+import blackBishop from "../assets/black_bishop.png";
+import blackKnight from "../assets/black_knight.png";
 
 const Square = ({
   row,
@@ -11,6 +16,7 @@ const Square = ({
   colorIndex,
   isColorMode,
   queenMatrix,
+  chessPiece,
 }) => {
   const [queen, setQueen] = useState(boardData.grid[row][col].queen);
   const [squareColorIndex, setSquareColorIndex] = useState(
@@ -20,6 +26,8 @@ const Square = ({
   const [isHovered, setIsHovered] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
 
+  const images = [blackQueen, blackQueen, blackRook, blackBishop, blackKnight];
+
   const handleClick = () => {
     const grid = [...boardData.grid];
 
@@ -28,7 +36,7 @@ const Square = ({
       grid[row][col].colorIndex = colorIndex;
       setSquareColorIndex(colorIndex);
     } else {
-      if (crossMark) return;
+      if (crossMark && !queen) return;
       if (!boardData.existsQueenAtColor(squareColorIndex) || queen) {
         grid[row][col].queen = !queen;
         setQueen(!queen);
@@ -49,7 +57,7 @@ const Square = ({
       (!isColorMode &&
         boardData.existsQueenAtColor(squareColorIndex) &&
         !queen) ||
-      (!isColorMode && !validateQueen(queenMatrix, row, col))
+      (!isColorMode && !validator[chessPiece](queenMatrix, row, col))
     ) {
       setCrossMark(true);
     }
@@ -77,7 +85,9 @@ const Square = ({
       onMouseEnter={handleHoverEnter}
       onMouseLeave={handleHoverLeave}
     >
-      {queen && <img src={blackQueen} alt="queen" className="w-8 h-8" />}
+      {queen && (
+        <img src={images[chessPiece]} alt="queen" className="w-8 h-8" />
+      )}
       {!queen && crossMark && <p>❌</p>}
     </div>
   );

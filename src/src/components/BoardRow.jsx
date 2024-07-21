@@ -7,6 +7,7 @@ const BoardRow = ({
   colorIndex,
   isColorMode,
   queenMatrix,
+  chessPiece,
 }) => {
   return (
     <div className="flex">
@@ -20,6 +21,7 @@ const BoardRow = ({
           colorIndex={colorIndex}
           isColorMode={isColorMode}
           queenMatrix={queenMatrix}
+          chessPiece={chessPiece}
         />
       ))}
     </div>

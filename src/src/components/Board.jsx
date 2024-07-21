@@ -6,6 +6,7 @@ const Board = ({
   colorIndex,
   isColorMode,
   queenMatrix,
+  chessPiece,
 }) => {
   return (
     <div className="w-fit h-fit mt-2 mb-10">
@@ -18,6 +19,7 @@ const Board = ({
           colorIndex={colorIndex}
           isColorMode={isColorMode}
           queenMatrix={queenMatrix}
+          chessPiece={chessPiece}
         />
       ))}
     </div>

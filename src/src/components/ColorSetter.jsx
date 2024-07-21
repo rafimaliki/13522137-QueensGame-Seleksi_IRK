@@ -21,6 +21,9 @@ const ColorSetter = ({
     setIsOpen(false);
   };
 
+  const firstHalfOfColor = colors.slice(0, colors.length / 2);
+  const secondHalfOfColor = colors.slice(colors.length / 2);
+
   return (
     <div className="relative flex flex-col justify-end items-end">
       <button
@@ -45,19 +48,38 @@ const ColorSetter = ({
               className="border border-black absolute z-10 mt-1 mr-1 w-fit bg-white rounded shadow-lg"
               style={{ right: "100%", marginRight: "10px", top: "-300%" }}
             >
-              {colors.map((color, index) => (
-                <div
-                  key={index}
-                  className="flex items-center p-2 cursor-pointer hover:bg-gray-200 rounded"
-                  onClick={() => handleColorChange(index)}
-                >
-                  <div
-                    className="w-6 h-6 rounded"
-                    style={{ backgroundColor: color }}
-                  ></div>
-                  <span className="text-sm ml-2">{color}</span>
+              <div className="flex">
+                <div className="flex flex-col">
+                  {firstHalfOfColor.map((color, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center p-2 cursor-pointer hover:bg-gray-200 rounded"
+                      onClick={() => handleColorChange(index)}
+                    >
+                      <div
+                        className="w-6 h-6 rounded"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                      <span className="text-sm ml-2">{color}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                <div className="flex flex-col">
+                  {secondHalfOfColor.map((color, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center p-2 cursor-pointer hover:bg-gray-200 rounded"
+                      onClick={() => handleColorChange(index)}
+                    >
+                      <div
+                        className="w-6 h-6 rounded"
+                        style={{ backgroundColor: color }}
+                      ></div>
+                      <span className="text-sm ml-2">{color}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
         </div>

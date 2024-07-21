@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BoardData from "../class/BoardData";
 
 const DimensionSetter = ({ dimension, boardData, setBoardData }) => {
-  const options = Array.from({ length: 10 }, (_, i) => i + 1);
+  const options = Array.from({ length: 16 }, (_, i) => i + 1);
   const [selectedOption, setSelectedOption] = useState(
     dimension === "Width" ? boardData.width : boardData.height
   );
