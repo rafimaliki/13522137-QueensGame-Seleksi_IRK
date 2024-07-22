@@ -41,6 +41,7 @@ src/
 
 ## Algoritma
 
+1. Backtracking
 Algoritma yang digunakan untuk mencari solusi pada Queens Game adalah algoritma Backtracking. Algoritma ini bagus untuk digunakan pada permasalahan ini karena dapat mencegah penelusuran ke simpul yang invalid. Sehingga solusi dapat ditemukan dalam waktu yang cukup cepat.
 
 Permasalahan permaianan ini dimodelkan dalam bentuk struktur data pohon, berikut langkahnya:
@@ -51,6 +52,16 @@ Permasalahan permaianan ini dimodelkan dalam bentuk struktur data pohon, berikut
 5. Di setiap simpul baru yang dijelajahi akan dicek apakah queens yang diletakan pada square tersebut merupakan valid, jika ya maka pencarian akan diperdalam, jika tidak maka simpul tersebut akan dimatikan dan tidak akan di telusuri lebih lanjut dan pencarian dilanjutkan dengan model backtracking ke atas.
 6. Jika pada pencarian sudah mencapai daun (kedalaman milik kelompok warna terakhir) dan state papan bernilai valid maka nilai true akan dikembalikan dan jalur tersebut merupakan solusi dari permasalahan.
 7. Jika seluruh kemungkinan sudah ditelusuri namun tidak ada state papan yang valid maka, false dikembalikan dan solusi tidak ada.
+
+2. Min-Conflicts
+Penyelesaian menggunakan pendekatan algoritma ini mengelompokan tiap square sesuai warnanya dan mencari posisi valid untuk meletakan sebuah piece pada kelompok warna tersebut, berikut langkahnya:
+1. Langkah pertama dalam mencari solusi adalah mengelompokan seluruh square/tiles pada papan catur berdasarkan warna
+2. Hapus kelompok warna yang sudah memiliki queen
+3. Letakan sebuah queen secara random pada tiap kelompok warna (misal indeks 0)
+5. Lakukan iterasi untuk tiap kelompok warna, cek apakah queen pada kelompok warna tersebut memiliki konflik dengan queen lainnya pada papan, jika iya, simpan kelompok warna tersebut.
+6. Jika tidak ditemukan kelompok warna yang memiliki queen konflik maka solusi telah ditemukan
+7. Jika ditemukan, maka pilih satu kelompok warna secara random dan lakukan iterasi untuk tiap square pada kelompok warna tersebut dan cari square dengan total konflik paling kecil, kemudian pindahkan queen ke square tersebut.
+8. Ulangi langakah 5 sampai maxIterasi (dalam kasus ini saya buat 10.000 kali iterasi) atau sampai solusi ditemukan.
 
 ## Cara menjalankan program
 
@@ -112,4 +123,5 @@ Tombol:
 
 ## Referensi Belajar
 
-[Website Rinaldi Munir](https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2023-2024/matdis23-24.htm)
+[Website Rinaldi Munir](https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2023-2024/matdis23-24.htm) <br>
+[Min-Conflicts Algorithm](https://en.wikipedia.org/wiki/Min-conflicts_algorithm)
