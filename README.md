@@ -82,7 +82,7 @@ http://localhost:5173/
 
 ## Cara menggunakan program
 
-![QueenGame](img/screenshot.png)
+![QueenGame](img/queensgame.png)
 
 Pengguna dapat mengklik square/tiles untuk meletakan piece catur
 
@@ -105,19 +105,22 @@ Tombol:
 2. "Board Size"
    Untuk mengubah dmensi papan
    
-3. "Set Piece"
+3. "Algorithm"
+   Untuk mengubah algoritma yang digunakan
+   
+4. "Set Piece"
    Untuk mengubah piece catur yang digunakan
    
-4. "Set Color"
+5. "Set Color"
    Untuk mengubah warna papan. Setelah memilih warna, pengguna dapat langsung mengklik square/tiles untuk mengubah warnanya. Tekan tombol "Finish" jika sudah selesai dan mau keluar dari mode mengubah warna.
    
-5. "Solve"
+6. "Solve"
    Untuk memanggil fungsi pencarian solusi
    
-6. "Clear"
+7. "Clear"
     Untuk menghapus semua piece catur yang telah diletakan
     
-7. "Reset"
+8. "Reset"
    Untuk mengembalikan papan ke kondisi default
 
 
