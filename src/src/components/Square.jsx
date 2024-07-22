@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { colors } from "../class/SquareData";
-import { validator } from "../logic/Solve";
+import { validator } from "../logic/Util";
 
 import blackQueen from "../assets/black_queen.png";
 import blackRook from "../assets/black_rook.png";

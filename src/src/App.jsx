@@ -11,14 +11,18 @@ import { makeQueenMatrix } from "./logic/Util";
 import PieceSetter from "./components/PieceSetter";
 import ClearButton from "./components/ClearButton";
 import ResetButton from "./components/ResetButton";
+import AlgorithmSetter from "./components/AlgorithmSetter";
 
 function App() {
   const [boardData, setBoardData] = useState(new BoardData(8, 8));
+  const [queenMatrix, setQueenMatrix] = useState(makeQueenMatrix(boardData));
+  const [noSollution, setNoSollution] = useState(false);
+
   const [colorIndex, setColorIndex] = useState(0);
   const [isColorMode, setIsColorMode] = useState(false);
-  const [queenMatrix, setQueenMatrix] = useState(makeQueenMatrix(boardData));
+
   const [chessPiece, setChessPiece] = useState(0);
-  const [noSollution, setNoSollution] = useState(false);
+  const [algorithm, setAlgorithm] = useState(0);
 
   useEffect(() => {
     setQueenMatrix(makeQueenMatrix(boardData));
@@ -58,7 +62,14 @@ function App() {
                   setBoardData={setBoardData}
                 />
               </div>
-              <PieceSetter setChessPiece={setChessPiece} />
+              <AlgorithmSetter
+                algorithm={algorithm}
+                setAlgorithm={setAlgorithm}
+              />
+              <PieceSetter
+                chessPiece={chessPiece}
+                setChessPiece={setChessPiece}
+              />
               <ColorSetter
                 colorIndex={colorIndex}
                 setColorIndex={setColorIndex}
@@ -71,6 +82,7 @@ function App() {
                   setBoardData={setBoardData}
                   chessPiece={chessPiece}
                   setNoSollution={setNoSollution}
+                  algorithm={algorithm}
                 />
               )}
               {noSollution ? (

@@ -1,5 +1,16 @@
-import validateLinkedInQueen from "./LinkedInQueen";
-import { validator } from "./Solve";
+import validateLinkedInQueen from "./Backtracking/PieceValidator/LinkedInQueen";
+import validateChessQueen from "./Backtracking/PieceValidator/ChessQueen";
+import validateChessRook from "./Backtracking/PieceValidator/ChessRook";
+import validateChessBishop from "./Backtracking/PieceValidator/ChessBishop";
+import validateChessKnight from "./Backtracking/PieceValidator/ChessKnight";
+
+const validator = [
+  validateLinkedInQueen,
+  validateChessQueen,
+  validateChessRook,
+  validateChessBishop,
+  validateChessKnight,
+];
 
 const makeColorMap = (boardData) => {
   const gridByColor = new Map();
@@ -50,4 +61,4 @@ const validateBoard = (chessPiece, queenMatrix) => {
   return true;
 };
 
-export { makeColorMap, makeQueenMatrix, validateBoard };
+export { makeColorMap, makeQueenMatrix, validateBoard, validator };

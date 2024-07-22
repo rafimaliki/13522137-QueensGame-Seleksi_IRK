@@ -4,7 +4,7 @@ import blackRook from "../assets/black_rook.png";
 import blackBishop from "../assets/black_bishop.png";
 import blackKnight from "../assets/black_knight.png";
 
-const PieceSetter = ({ setChessPiece }) => {
+const PieceSetter = ({ chessPiece, setChessPiece }) => {
   const [isOpen, setIsOpen] = useState(false); // Dropdown open state
   const images = [blackQueen, blackQueen, blackRook, blackBishop, blackKnight];
   const names = [
@@ -38,7 +38,9 @@ const PieceSetter = ({ setChessPiece }) => {
             {images.map((image, index) => (
               <div
                 key={index}
-                className="w-36 flex items-center p-2 cursor-pointer hover:bg-gray-200 rounded"
+                className={`w-36 flex items-center p-2 cursor-pointer ${
+                  chessPiece == index ? "bg-[#c7f3c8] " : " bg-white"
+                } hover:bg-gray-200 rounded`}
                 onClick={() => handlePieceChange(index)}
               >
                 <img src={image} alt="queen" className="w-8 h-8" />

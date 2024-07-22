@@ -7,11 +7,17 @@ const SolveButton = ({
   setBoardData,
   chessPiece,
   setNoSollution,
+  algorithm,
 }) => {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleClick = () => {
-    const haveSollution = solveQueen(boardData, setBoardData, chessPiece);
+    const haveSollution = solveQueen(
+      boardData,
+      setBoardData,
+      chessPiece,
+      algorithm
+    );
     setShowAlert(true);
 
     setTimeout(() => {
@@ -23,7 +29,7 @@ const SolveButton = ({
   return (
     <div className="relative flex flex-col justify-end items-end">
       <button
-        className="mb-2 p-2 bg-gray-800 hover:bg-gray-700 text-white rounded w-20 h-6 mr-1 flex items-center justify-center text-center text-sm"
+        className="mb-2 p-2 bg-green-700 hover:bg-green-800 text-white rounded w-20 h-6 mr-1 flex items-center justify-center text-center text-sm"
         onClick={handleClick}
       >
         Solve

@@ -1,26 +1,19 @@
 import BoardData from "../class/BoardData";
 import { makeColorMap, makeQueenMatrix, validateBoard } from "./Util";
-import validateLinkedInQueen from "./LinkedInQueen";
-import validateChessQueen from "./ChessQueen";
-import validateChessRook from "./ChessRook";
-import validateChessBishop from "./ChessBishop";
-import validateChessKnight from "./ChessKnight";
 
-const validator = [
-  validateLinkedInQueen,
-  validateChessQueen,
-  validateChessRook,
-  validateChessBishop,
-  validateChessKnight,
-];
+import backTrackSearch from "./Backtracking/Backtracking";
+import minConflict from "./Min-Conflict/Min-Conflict";
 
-const solveQueen = (boardData, setBoardData, chessPiece) => {
+const algorithms = [backTrackSearch, minConflict];
+
+const solveQueen = (boardData, setBoardData, chessPiece, algorithm) => {
   console.log("Solving...");
+  console.log("Algorithm: ", algorithm);
 
   const gridByColor = makeColorMap(boardData);
   const queenMatrix = makeQueenMatrix(boardData);
 
-  const result = backTrackSearch(
+  const result = algorithms[algorithm](
     chessPiece,
     queenMatrix,
     gridByColor,
@@ -32,10 +25,8 @@ const solveQueen = (boardData, setBoardData, chessPiece) => {
 
     for (let i = 0; i < boardData.height; i++) {
       for (let j = 0; j < boardData.width; j++) {
-        if (result.queenMatrix[i][j] && !boardData.grid[i][j].queen) {
+        if (result.queenMatrix[i][j]) {
           boardData.grid[i][j].queen = true;
-        } else if (!result.queenMatrix[i][j] && boardData.grid[i][j].queen) {
-          boardData.grid[i][j].queen = false;
         }
       }
     }
@@ -55,39 +46,4 @@ const solveQueen = (boardData, setBoardData, chessPiece) => {
   return result.bool;
 };
 
-const backTrackSearch = (chessPiece, queenMatrix, gridByColor, depth) => {
-  if (depth === 0) {
-    if (validateBoard(chessPiece, queenMatrix)) {
-      return { queenMatrix: queenMatrix, bool: true };
-    } else {
-      return { queenMatrix: null, bool: false };
-    }
-  } else {
-    const colorSet = [...gridByColor.values().next().value];
-    const newGridByColor = new Map(gridByColor);
-
-    for (let square of colorSet) {
-      const row = square.row;
-      const col = square.col;
-
-      if (validator[chessPiece](queenMatrix, row, col)) {
-        const newQueenMatrix = [...queenMatrix.map((row) => [...row])];
-        newQueenMatrix[row][col] = true;
-        newGridByColor.delete(colorSet[0].colorIndex);
-        const result = backTrackSearch(
-          chessPiece,
-          newQueenMatrix,
-          newGridByColor,
-          depth - 1
-        );
-        if (result.bool) {
-          return { queenMatrix: result.queenMatrix, bool: true };
-        }
-      }
-    }
-  }
-
-  return { queenMatrix: null, bool: false };
-};
-
-export { solveQueen, validator };
+export { solveQueen, algorithms };
