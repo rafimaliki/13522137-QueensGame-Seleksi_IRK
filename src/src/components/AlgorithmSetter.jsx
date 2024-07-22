@@ -5,7 +5,7 @@ const AlgorithmSetter = ({ algorithm, setAlgorithm }) => {
 
   const handleAlgorithmChange = (index) => {
     setAlgorithm(index);
-    console.log(index);
+    // console.log(index);
     setIsOpen(false);
   };
 

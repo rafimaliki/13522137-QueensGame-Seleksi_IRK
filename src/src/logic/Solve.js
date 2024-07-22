@@ -7,8 +7,8 @@ import minConflict from "./Min-Conflict/Min-Conflict";
 const algorithms = [backTrackSearch, minConflict];
 
 const solveQueen = (boardData, setBoardData, chessPiece, algorithm) => {
-  console.log("Solving...");
-  console.log("Algorithm: ", algorithm);
+  //   console.log("Solving...");
+  //   console.log("Algorithm: ", algorithm);
 
   const gridByColor = makeColorMap(boardData);
   const queenMatrix = makeQueenMatrix(boardData);
@@ -21,7 +21,7 @@ const solveQueen = (boardData, setBoardData, chessPiece, algorithm) => {
   );
 
   if (result.bool) {
-    console.log("Solution found!");
+    // console.log("Solution found!");
 
     for (let i = 0; i < boardData.height; i++) {
       for (let j = 0; j < boardData.width; j++) {
@@ -40,7 +40,7 @@ const solveQueen = (boardData, setBoardData, chessPiece, algorithm) => {
       setBoardData(newBoardData);
     }, 100);
   } else {
-    console.log("No solution found");
+    // console.log("No solution found");
   }
 
   return result.bool;
